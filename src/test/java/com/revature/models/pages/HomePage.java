@@ -13,15 +13,6 @@ public class HomePage {
 	
 private  WebDriver driver;
 
-//	@FindBy(id="featuredbooks")
-//	private WebElement featureDisplay;
-//	
-//	@FindBy(id="booktitlegenre")
-//	private WebElement genreDisplay;
-//	
-//	@FindBy(id="salebooks")
-//	private WebElement saleDisplay;
-	
 	public HomePage(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
