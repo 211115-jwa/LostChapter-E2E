@@ -5,30 +5,27 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.revature.models.components.CartComponent;
-import com.revature.models.components.LoginComponent;
-import com.revature.models.pages.CartPage;
 import com.revature.models.pages.LoginPage;
-import com.revature.models.pages.SignupPage;
 
+import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class LoginTest {
 
-	private WebDriver driver;
-	private WebDriverWait wdw;
-	private String websiteUrl = "localhost:4200";
-	private LoginPage loginPage;
+	private static WebDriver driver;
+	private String websiteUrl = "localhost:4200/login";
+	private static LoginPage loginPage;
 	
 
-	{
+	@BeforeAll
+	public static void setUpDriver(){
 		File file = new File("src/test/chromedriver.exe");
 		System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 
@@ -36,6 +33,12 @@ public class LoginTest {
 		loginPage = new LoginPage(driver);
 	}
 	
+	@AfterEach
+	public void teardown() {
+		
+		this.driver.close();
+		this.driver.quit();	
+	}
 	
 	@Given("I am on the home page")
 	public void i_am_on_the_home_page() {
@@ -67,7 +70,12 @@ public class LoginTest {
 	@Then("the appropriate error message should appear")
 	public void the_appropriate_error_message_should_appear() {
 		String errorMsg = loginPage.getErrorMessage();
-	    assertTrue(errorMsg.contains("Username and password"));
+	    assertTrue(errorMsg.contains("Invalid Credentials"));
+	}
+	
+	@Given("I click the login button in the Header")
+	public void i_click_the_login_button_in_the_header() {
+		loginPage.clickLoginHeader();
 	}
 
 }

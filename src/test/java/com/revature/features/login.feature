@@ -4,6 +4,7 @@ Feature: Login works
 
 Scenario Outline: Logging in correctly
 	Given I am on the home page
+	And I click the login button in the Header
 	When I enter "<username>" and "<password>" to log in
 	And I click the login button
 	Then the username link should contain "<username>"
@@ -16,6 +17,7 @@ Scenario Outline: Logging in correctly
 		
 	Scenario Outline: Logging in incorrectly
 		Given I am on the home page
+		And I click the login button in the Header
 		When I enters an incorrect "<username>" and "<password>"
 		And I click the login button
 		Then the appropriate error message should appear

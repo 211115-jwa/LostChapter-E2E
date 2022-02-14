@@ -1,122 +1,102 @@
-//package com.revature.tests;
-//
-//import org.junit.jupiter.api.AfterEach;
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.chrome.ChromeDriver;
-//import org.openqa.selenium.support.ui.WebDriverWait;
-//
-//import com.revature.models.pages.CartPage;
-//import com.revature.models.pages.FrontPage;
-//import com.revature.models.pages.LoginPage;
-//
-//import io.cucumber.java.en.Given;
-//import io.cucumber.java.en.Then;
-//import io.cucumber.java.en.When;
-//
-//public class CartTest {
-//
-//	
-//	private WebDriver driver;
-//	private WebDriverWait wdw;
-//	private String websiteUrl = "http://localhost:4200";
-//	
-//	private CartPage cartPage;
-//	private LoginPage loginPage;
-//	private FrontPage frontPage; 
-//	
-//	@AfterEach
-//	public void teardown() {
-//		
-//		this.driver.close();
-//		this.driver.quit(); 
-//		
-//	}
-//	
-//	@Given("I am at the front page while logged in as a customer")
-//	public void i_am_at_the_front_page_while_logged_in_as_a_customer() {
-//		
-//		System.setProperty("webdriver.chrome.driver", "C:/WebDrivers/chromedriver.exe");
-//		this.driver = new ChromeDriver();
-//		driver.manage().window().maximize();
-//		wdw = new WebDriverWait(this.driver, 2);
-//		driver.get(loginPage.pageUrl);
-//		
-//		this.loginPage.login.setUsernameText("username");
-//		this.loginPage.login.setPasswordText("password");
-//		this.loginPage.login.clickLoginButton();
-//		
-//		driver.get(frontPage.pageUrl);
-//		
-//		
-//	}
-//
-//	@When("I click on a product on the front page")
-//	public void i_click_on_a_product_on_the_front_page() throws InterruptedException {
-//		
-//		this.frontPage.frontPageComponent.clickFirstProduct();
-//		
-//	}
-//
-//	@When("I click add to cart")
-//	public void i_click_add_to_cart() {
-//		
-//		this.frontPage.product.clickAddToCart();
-//		
-//	}
-//
-//	@When("I go to my cart")
-//	public void i_go_to_my_cart() {
-//		
-//		this.frontPage.navbar.clickCartButton();
-//		
-//	}
-//
-//	@Then("I should see the product displayed in my cart")
-//	public void i_should_see_the_product_displayed_in_my_cart() {
-//		// Write code here that turns the phrase above into concrete actions
-//		throw new io.cucumber.java.PendingException();
-//	}
-//
-//	@When("I click remove item from cart")
-//	public void i_click_remove_item_from_cart() {
-//		// Write code here that turns the phrase above into concrete actions
-//		throw new io.cucumber.java.PendingException();
-//	}
-//
-//	@Then("I should see my cart is empty")
-//	public void i_should_see_my_cart_is_empty() {
-//		// Write code here that turns the phrase above into concrete actions
-//		throw new io.cucumber.java.PendingException();
-//	}
-//
-//	@Given("I am at the front page while not logged in")
-//	public void i_am_at_the_front_page_while_not_logged_in() {
-//		// Write code here that turns the phrase above into concrete actions
-//		throw new io.cucumber.java.PendingException();
-//	}
-//
-//	@Then("I should be prompted to login")
-//	public void i_should_be_prompted_to_login() {
-//		// Write code here that turns the phrase above into concrete actions
-//		throw new io.cucumber.java.PendingException();
-//	}
-//
-//	@When("I select a product that is out of stock")
-//	public void i_select_a_product_that_is_out_of_stock() {
-//		// Write code here that turns the phrase above into concrete actions
-//		throw new io.cucumber.java.PendingException();
-//	}
-//
-//	@Then("I should see an error message saying the item is out of stock")
-//	public void i_should_see_an_error_message_saying_the_item_is_out_of_stock() {
-//		// Write code here that turns the phrase above into concrete actions
-//		throw new io.cucumber.java.PendingException();
-//	}
-//
-//	@Then("I should see the product displayed in my cart with a quantity of two")
-//	public void i_should_see_the_product_displayed_in_my_cart_with_a_quantity_of_two() {
-//		// Write code here that turns the phrase above into concrete actions
-//		throw new io.cucumber.java.PendingException();
-//	}
-//
-//}
+package com.revature.tests;
+
+import static org.junit.Assert.assertNull;
+
+import java.time.Duration;
+
+import org.junit.jupiter.api.AfterEach;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+
+import com.revature.models.pages.CartPage;
+import com.revature.models.pages.LoginPage;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+public class CartTest {
+
+	
+	private WebDriver driver;
+	private String websiteUrl = "localhost:4200/home";
+	private String cartUrl = "localhost:4200/cart";
+	
+	private CartPage cartPage;
+	private LoginPage loginPage; 
+	
+	@AfterEach
+	public void teardown() {	
+		this.driver.close();
+		this.driver.quit(); 
+	}
+	
+	@Given("I am on the home page")
+	public void i_am_on_the_home_page() {
+		cartPage.navigateTo(websiteUrl);
+	}
+
+	@When("I click on a product on the front page")
+	public void i_click_on_a_product_on_the_front_page() {
+		cartPage.clickProduct();
+	}
+
+	@When("I put a quantity")
+	public void i_put_a_quantity() {
+		cartPage.clickQuantity();
+	}
+
+	@When("I click add to cart")
+	public void i_click_add_to_cart() {
+		cartPage.clickAddCart();
+	}
+
+	@Then("I am redirected to my cart page")
+	public void i_am_redirected_to_my_cart_page() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@Then("products are visible")
+	public void products_are_visible1() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+	
+	
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	
+	@When("I am redirected to my cart page")
+	public void i_am_redirected_to_my_cart_page1() {
+		cartPage.navigateTo(cartUrl);
+	}
+
+	@When("products are visible")
+	public void products_are_visible() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@When("I click remove item from cart")
+	public void i_click_remove_item_from_cart() {
+		cartPage.clickDelete();
+	}
+
+	@Then("I should see my cart is empty")
+	public void i_should_see_my_cart_is_empty() {
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(Duration.ofSeconds(5))
+				.pollingEvery(Duration.ofMillis(50));
+		wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.id("cart"),0));
+
+		WebElement book = driver.findElement(By.id("cart"));
+		assertNull(book.getText());
+	}
+	
+}

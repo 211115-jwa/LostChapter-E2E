@@ -19,9 +19,9 @@ public class LogoutTest {
 
 	private static WebDriver driver;
 	private WebDriverWait wdw;
-	private String websiteUrl = "localhost:4200";
-	private String homeUrl = "localhost:4200/home";
+	private String websiteUrl = "localhost:4200/home";
 	private LogoutPage logoutPage;
+	private LoginPage loginPage;
 
 	@BeforeAll
 	public static void setUpDriver()
@@ -38,9 +38,19 @@ public class LogoutTest {
 		logoutPage.navigateTo(websiteUrl);
 	}
 	
+	@Given("I click the login button in the Header")
+	public void i_click_the_login_button_in_the_header() {
+		loginPage.clickLoginHeader();
+	}
+	
+	@Given("I enter username and password to log in")
+	public void i_enter_username_and_password_to_log_in() {
+		logoutPage.enterCredentials("chrisw", "123456789");
+	}
+	
 	@Given("I click the login button")
 	public void i_click_the_login_button() {
-		logoutPage.clickLoginButton();
+		loginPage.clickLoginButton();
 	}
 
 	@When("I click the logout button")
@@ -50,6 +60,7 @@ public class LogoutTest {
 
 	@Then("I should be redirected to the Home page")
 	public void i_should_be_redirected_to_the_home_page() {
-		logoutPage.navigateTo(homeUrl);
+		logoutPage.navigateTo(websiteUrl);
 	}
+	
 }

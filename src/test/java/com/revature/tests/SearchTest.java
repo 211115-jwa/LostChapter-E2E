@@ -19,8 +19,10 @@ public class SearchTest {
 
 	private static WebDriver driver;
 	private static WebDriverWait wait;
-	private String websiteUrl = "localhost:4200";
-	private String searchURL = "localhost:4200/search";
+	private String websiteUrl = "localhost:4200/home";
+	private String searchURL = "localhost:4200/search-results/";
+	String badBook = "Harry Potter and the Adventures of Hermione";
+	String goodBook = "Harry Potter and the Goblet of Fire";
 
 	private static SearchResultPage searchResultPage;
 
@@ -41,7 +43,7 @@ public class SearchTest {
 
 	@When("I enters an correct book on the search bar")
 	public void i_enters_an_correct_book_on_the_search_bar() {
-		searchResultPage.searchBook("Harry Potter and the chamber of secrets");
+		searchResultPage.searchBook(goodBook);
 	}
 
 	@When("I click search")
@@ -51,12 +53,12 @@ public class SearchTest {
 
 	@When("I enters an incorrect book on the search bar")
 	public void i_enters_an_incorrect_book_on_the_search_bar() {
-		searchResultPage.searchBook("Harry Potter and the adventures of hermione");
+		searchResultPage.searchBook(badBook);
 	}
 	
 	@Then("I am redirected to the search results page and see results")
 	public void i_am_redirected_to_the_search_results_page_and_see_results() {
-		searchResultPage.navigateTo(searchURL);
+		searchResultPage.navigateTo(searchURL.concat(goodBook));
 	}
 
 	@Then("the appropriate error message should appear")

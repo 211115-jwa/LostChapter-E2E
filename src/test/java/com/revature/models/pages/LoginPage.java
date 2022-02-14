@@ -15,16 +15,13 @@ import org.openqa.selenium.support.ui.Wait;
 
 public class LoginPage {
 	
-	@FindBy(id="username")
-	private WebElement usernameInput;
-	@FindBy(id="passwd")
-	private WebElement passwordInput;
-	@FindBy(id="loginBtn")
-	private WebElement loginBtn;
-	@FindBy(id="sL")
+	@FindBy(id="loginBtnHeader")
+	private WebElement loginBtnHeader;
+	@FindBy(id="log-out-btn")
+	WebElement logoutBtn;
+	
+	@FindBy(id="login-button-logincomponent")
 	private WebElement logBtn;
-	@FindBy(id="usernameLink")
-	WebElement usernameLink;
 	
 	private  WebDriver driver;
 	
@@ -38,44 +35,32 @@ public class LoginPage {
 	}
 	
 	public void clickLoginButton() {
-		loginBtn.click();	
+		logBtn.click();	
 	}
 	
 	public void enterUsernameAndPassword(String username, String password) {
-		
-		//usernameInput.sendKeys(username);
-		//passwordInput.sendKeys(password);
-		
-		driver.findElement(By.id("username")).sendKeys(username);
-		driver.findElement(By.id("passwd")).sendKeys(password);
+		driver.findElement(By.id("username-login")).sendKeys(username);
+		driver.findElement(By.id("password-login")).sendKeys(password);
 	}
 	
 	public String getLoginText() {
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-				.withTimeout(Duration.ofSeconds(5)) // .withTimeout(5, TimeUnit.SECONDS)
+				.withTimeout(Duration.ofSeconds(5)) 
 				.pollingEvery(Duration.ofMillis(100))
 				.ignoring(NoSuchElementException.class);
 		
-		wait.until(ExpectedConditions.visibilityOf(usernameLink));
-		return usernameLink.getText();
+		wait.until(ExpectedConditions.visibilityOf(logoutBtn));
+		return logoutBtn.getText();
 	}
 
 	public String getErrorMessage() {
-		WebElement errorMsg = driver.findElement(By.tagName("")); // Doesn't have to be Tag name
+		WebElement errorMsg = driver.findElement(By.id("Error-login")); 
 		return errorMsg.getText();
+	}
+
+	public void clickLoginHeader() {
+		loginBtnHeader.click();
+		
 	}
 	
 }
-
-
-//public NavbarComponent navbar;
-//public LoginComponent login; 
-//public static String pageUrl = "";
-//
-//
-//public LoginPage(WebDriver driver) {
-//	
-//	this.navbar = new NavbarComponent(driver);
-//	this.login = new LoginComponent(driver);
-//	
-//}

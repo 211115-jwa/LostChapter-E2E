@@ -9,7 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 public class SearchResultPage {
 
 	private WebDriver driver;
-	@FindBy(id="search")
+	
+	@FindBy(id="searchBtn")
 	private WebElement searchBtn;
 
 	public SearchResultPage(WebDriver driver) {
@@ -22,7 +23,7 @@ public class SearchResultPage {
 	}
 	
 	public String getErrorMessage() {
-		WebElement errorMsg = driver.findElement(By.tagName("")); // Doesn't have to be Tag name
+		WebElement errorMsg = driver.findElement(By.id("error-search")); 
 		return errorMsg.getText();
 	}
 
