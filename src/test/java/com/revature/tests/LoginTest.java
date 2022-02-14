@@ -1,5 +1,10 @@
 package com.revature.tests;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.io.File;
+
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,11 +25,55 @@ public class LoginTest {
 	private WebDriver driver;
 	private WebDriverWait wdw;
 	private String websiteUrl = "localhost:4200";
-
 	private LoginPage loginPage;
+	
 
+	{
+		File file = new File("src/test/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 
-	@Given("I am at the login page")
+		driver = new ChromeDriver();
+		loginPage = new LoginPage(driver);
+	}
+	
+	
+	@Given("I am on the home page")
+	public void i_am_on_the_home_page() {
+		loginPage.navigateTo(websiteUrl);
+	}
+
+	@When("I enter {string} and {string} to log in")
+	public void i_enter_and_to_log_in(String string, String string2) {
+		loginPage.enterUsernameAndPassword(string, string2);
+	}
+
+	@When("I click the login button")
+	public void i_click_the_login_button() {
+		loginPage.clickLoginButton();
+	}
+
+	@Then("the username link should contain {string}")
+	public void the_username_link_should_contain(String string) {
+		String linkText = loginPage.getLoginText();
+	    assertEquals(string + " ", linkText);
+	    loginPage.clickLoginButton();
+	}
+
+	@When("I enters an incorrect {string} and {string}")
+	public void i_enters_an_incorrect_and(String string, String string2) {
+		loginPage.enterUsernameAndPassword(string, string2);
+	}
+
+	@Then("the appropriate error message should appear")
+	public void the_appropriate_error_message_should_appear() {
+		String errorMsg = loginPage.getErrorMessage();
+	    assertTrue(errorMsg.contains("Username and password"));
+	}
+
+}
+
+/*
+ * 	@Given("I am at the login page")
 	public void i_am_at_the_login_page() {
 		
 		System.setProperty("webdriver.chrome.driver", "C:/webdrivers/chromedriver.exe");
@@ -83,4 +132,4 @@ public class LoginTest {
 		throw new io.cucumber.java.PendingException();
 	}
 
-}
+ */

@@ -68,14 +68,14 @@ Examples:
 | "" | "xyz" |
 | "abc" | "" |
 
-Scenerio: Filtering by publisher (positive)
-Given: I have searched for <search> and been taken to the results
-And I enter <publisherName> in the publisher field
-And I click the search button
-Then I see the result
+#Scenerio: Filtering by publisher (positive)
+#Given: I have searched for <search> and been taken to the results
+#And I enter <publisherName> in the publisher field
+#And I click the search button
+#Then I see the result
 
 
-Scenerio: Filtering by publisher but publisher is blank (negative)
-Given: I have searched for <search> and been taken to the results
-And I click the search button
-Then I see the result
+#Scenerio: Filtering by publisher but publisher is blank (negative)
+#Given: I have searched for <search> and been taken to the results
+#And I click the search button
+#Then I see the result

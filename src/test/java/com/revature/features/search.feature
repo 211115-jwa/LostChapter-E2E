@@ -1,13 +1,15 @@
-Feature: Search
+Feature: Search works
 
-# TEST-52
-Scenario Outline: User searches for product by keyword (positive test)
-Given I am at the search bar
-When Enter in a query in the search field in the navbar of <searchTitle>
-And I click search button in navbar
-Then I should be taken to the search results page and see results with <resultTitle>
+# Background: Given I am on the home page
 
-Examples:
-| searchTitle | resultTitle |
-| "catcher" | "Catcher and the Rye" | # TEST-52 # check if result are true
-| "Your Money or Your Life" | "Your Money or Your Life" | # TEST-52 # check if results are true
+Scenario Outline: Searching for a book that does exist
+	Given I am on the home page
+	When I enters an correct book on the search bar
+	And I click search
+	Then I am redirected to the search results page and see results
+	
+Scenario Outline: Searching for a book that does not exist
+	Given I am on the home page
+	When I enters an incorrect book on the search bar
+	And I click search
+	Then the appropriate error message should appear

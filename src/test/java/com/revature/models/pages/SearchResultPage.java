@@ -1,22 +1,37 @@
 package com.revature.models.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import com.revature.models.components.SearchFilterComponent;
-import com.revature.models.components.SearchResultsComponent;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class SearchResultPage {
-	
-	public SearchResultsComponent searchResults;
-	public SearchFilterComponent searchFilter; 
-	public static String pageUrl = "";
 
-	
+	private WebDriver driver;
+	@FindBy(id="search")
+	private WebElement searchBtn;
+
 	public SearchResultPage(WebDriver driver) {
-		
-		this.searchResults = new SearchResultsComponent(driver);
-		this.searchFilter = new SearchFilterComponent(driver);
-		
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
+	}
+
+	public void navigateTo(String websiteUrl) {
+		driver.get(websiteUrl);
+	}
+	
+	public String getErrorMessage() {
+		WebElement errorMsg = driver.findElement(By.tagName("")); // Doesn't have to be Tag name
+		return errorMsg.getText();
+	}
+
+	public void clickSearch() {
+		searchBtn.click();
+	}
+
+	public void searchBook(String string) {
+		driver.findElement(By.id("search")).sendKeys(string);	
 	}
 
 }
