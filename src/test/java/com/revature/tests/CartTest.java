@@ -10,6 +10,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -17,6 +19,7 @@ import org.openqa.selenium.support.ui.Wait;
 import com.revature.models.pages.CartPage;
 import com.revature.models.pages.LoginPage;
 
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -24,7 +27,7 @@ import io.cucumber.java.en.When;
 public class CartTest {
 
 	
-	private WebDriver driver;
+	private static WebDriver driver;
 	private String websiteUrl = "localhost:4200/home";
 	private String cartUrl = "localhost:4200/cart";
 	
@@ -85,5 +88,9 @@ public class CartTest {
 		assertNull(book.getText());
 	}
 	
+	@AfterAll
+	public static void closeDriver() {
+		driver.quit();
+	}
 }
 

@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.revature.models.pages.LoginPage;
 
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -168,5 +169,10 @@ public class LoginTest {
 	public void the_page_says_incorrect_credentials() {
 		String errorMsg = loginPage.getErrorMessage();
 	    assertTrue(errorMsg.contains("Invalid Credentials"));
+	}
+	
+	@AfterAll
+	public static void closeDriver() {
+		driver.quit();
 	}
 }

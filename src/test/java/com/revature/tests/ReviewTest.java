@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.revature.models.pages.ReviewPage;
 
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -65,6 +66,11 @@ public class ReviewTest {
 	public void i_can_enter_a_review_title() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
+	}
+	
+	@AfterAll
+	public static void closeDriver() {
+		driver.quit();
 	}
 
 }
