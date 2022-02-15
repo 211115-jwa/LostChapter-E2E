@@ -37,11 +37,6 @@ public class ReviewTest {
 		this.driver.quit();	
 	}
 
-	@Given("I am on the home page")
-	public void i_am_on_the_home_page() {
-		reviewPage.navigateTo(websiteUrl);
-	}
-
 	@When("I click on a product on the front page")
 	public void i_click_on_a_product_on_the_front_page() {
 		// Write code here that turns the phrase above into concrete actions
@@ -56,36 +51,6 @@ public class ReviewTest {
 
 	@Then("reviews can be viewed below")
 	public void reviews_can_be_viewed_below() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Given("I click the login button in the Header")
-	public void i_click_the_login_button_in_the_header() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Given("I enter username and password to log in")
-	public void i_enter_username_and_password_to_log_in() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Given("I click the login button")
-	public void i_click_the_login_button() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Given("I click on a product on the front page")
-	public void i_click_on_a_product_on_the_front_page1() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Given("the book information popup shows")
-	public void the_book_information_popup_shows() {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}

@@ -42,11 +42,6 @@ public class CartTest {
 		cartPage.navigateTo(websiteUrl);
 	}
 
-	@When("I click on a product on the front page")
-	public void i_click_on_a_product_on_the_front_page() {
-		cartPage.clickProduct();
-	}
-
 	@When("I put a quantity")
 	public void i_put_a_quantity() {
 		cartPage.clickQuantity();
