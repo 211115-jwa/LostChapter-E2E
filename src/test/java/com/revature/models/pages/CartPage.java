@@ -14,7 +14,7 @@ public class CartPage {
 	WebElement quantity;
 	@FindBy(id="delete")
 	WebElement delete;
-	@FindBy(id="add") //?
+	@FindBy(id="add") 
 	WebElement addCart;
 
 	public CartPage(WebDriver driver) {
@@ -41,5 +41,7 @@ public class CartPage {
 	public void clickDelete() {
 		delete.click();
 	}
-
+	
+	
+	
 }

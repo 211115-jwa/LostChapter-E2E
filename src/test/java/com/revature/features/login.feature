@@ -11,7 +11,7 @@ Scenario Outline: Logging in correctly
 	
 	Examples:
 		|		username		|		password		|
-		|		testpost		| 		123456789		|
+		|		testing 		| 		123456789		|
 		|		chrisw			|		123456789		|
 		
 		
