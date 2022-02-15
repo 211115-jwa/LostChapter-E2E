@@ -3,6 +3,7 @@ package com.revature.tests;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import java.io.File;
 import java.time.Duration;
 
 import org.junit.jupiter.api.AfterEach;
@@ -17,6 +18,7 @@ import org.openqa.selenium.support.ui.Wait;
 import com.revature.models.pages.CartPage;
 import com.revature.models.pages.LoginPage;
 
+import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -24,12 +26,20 @@ import io.cucumber.java.en.When;
 public class CartTest {
 
 	
-	private WebDriver driver;
+	private static WebDriver driver;
 	private String websiteUrl = "localhost:4200/home";
 	private String cartUrl = "localhost:4200/cart";
 	
-	private CartPage cartPage;
-	private LoginPage loginPage; 
+	private static CartPage cartPage;
+	
+	@BeforeAll
+	public static void setUpDriver(){
+		File file = new File("src/test/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+
+		driver = new ChromeDriver();
+		cartPage = new CartPage(driver);
+	}
 	
 	@AfterEach
 	public void teardown() {	
@@ -39,12 +49,21 @@ public class CartTest {
 	
 	@Given("I am on the home page")
 	public void i_am_on_the_home_page() {
-		cartPage.navigateTo(websiteUrl);
+		cartPage.navigateTo(this.websiteUrl);
 	}
 
 	@When("I put a quantity")
 	public void i_put_a_quantity() {
 		cartPage.clickQuantity();
+	}
+	
+	@When("I click on a product on the front page")
+	public void i_click_on_a_product_on_the_front_page() {
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(Duration.ofSeconds(5))
+				.pollingEvery(Duration.ofMillis(50));
+		wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.id("product"),0));
+		cartPage.clickProduct();
 	}
 
 	@When("I click add to cart")
@@ -54,7 +73,7 @@ public class CartTest {
 
 	@Then("I am redirected to my cart page")
 	public void i_am_redirected_to_my_cart_page() {
-		cartPage.navigateTo(cartUrl);
+		cartPage.navigateTo(this.cartUrl);
 	}
 
 	@Then("products are visible")

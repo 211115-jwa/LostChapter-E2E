@@ -42,7 +42,7 @@ public class LoginTest {
 	
 	@Given("I am on the login page")
 	public void i_am_on_the_login_page() {
-		loginPage.navigateTo(websiteUrl);
+		loginPage.navigateTo(this.websiteUrl);
 	}
 
 	@When("I enter {string} and {string} to log in")

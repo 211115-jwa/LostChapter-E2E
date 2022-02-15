@@ -1,5 +1,6 @@
 package com.revature.models.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,6 +28,7 @@ public class CartPage {
 	}
 
 	public void clickProduct() {
+		//driver.findElement(By.id("product")).click();
 		product.click();
 	}
 
