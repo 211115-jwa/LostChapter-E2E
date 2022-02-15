@@ -3,6 +3,7 @@ package com.revature.tests;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import java.io.File;
 import java.time.Duration;
 
 import org.junit.jupiter.api.AfterEach;
@@ -20,6 +21,7 @@ import com.revature.models.pages.CartPage;
 import com.revature.models.pages.LoginPage;
 
 import io.cucumber.java.AfterAll;
+import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -31,13 +33,22 @@ public class CartTest {
 	private String websiteUrl = "localhost:4200/home";
 	private String cartUrl = "localhost:4200/cart";
 	
-	private CartPage cartPage;
+	private static CartPage cartPage;
 	private LoginPage loginPage; 
+	
+	@BeforeAll
+	public static void setUpDriver(){
+		File file = new File("src/test/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+
+		driver = new ChromeDriver();
+		cartPage = new CartPage(driver);
+	}
 	
 	@AfterEach
 	public void teardown() {	
-		this.driver.close();
-		this.driver.quit(); 
+		driver.close();
+		driver.quit(); 
 	}
 	
 	@Given("I am on the home page")

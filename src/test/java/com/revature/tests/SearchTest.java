@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 
+import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -35,6 +36,13 @@ public class SearchTest {
 
 		driver = new ChromeDriver();
 		searchResultPage = new SearchResultPage(driver);
+	}
+	
+	@AfterEach
+	public void teardown() {
+
+		driver.close();
+		driver.quit();	
 	}
 
 	@When("I enters an correct book on the search bar")
