@@ -40,8 +40,8 @@ public class LoginTest {
 		this.driver.quit();	
 	}
 	
-	@Given("I am on the home page")
-	public void i_am_on_the_home_page() {
+	@Given("I am on the login page")
+	public void i_am_on_the_login_page() {
 		loginPage.navigateTo(websiteUrl);
 	}
 
@@ -78,7 +78,7 @@ public class LoginTest {
 		loginPage.clickLoginHeader();
 	}
 
-}
+
 
 /*
  * 	@Given("I am at the login page")
@@ -141,3 +141,32 @@ public class LoginTest {
 	}
 
  */
+
+	@Given("the user is on the login page")
+	public void the_user_is_on_the_login_page() {
+		loginPage.navigateTo(websiteUrl);
+	}
+	
+	@When("the user enters {string} and {string} to log in")
+	public void the_user_enters_and_to_log_in(String username, String password) {
+		loginPage.enterUsernameAndPassword(username, password);
+	}
+	
+	@When("the user clicks the submit button")
+	public void the_user_clicks_the_submit_button() {
+		loginPage.clickLoginButton();
+	}
+	
+	@Then("the navbar says {string}")
+	public void the_navbar_says(String username) {
+		String linkText = loginPage.getLoginText();
+		assertEquals(username + " ", linkText);
+		loginPage.clickLogoutButton();
+	}
+	
+	@Then("the page says Incorrect Credentials")
+	public void the_page_says_incorrect_credentials() {
+		String errorMsg = loginPage.getErrorMessage();
+	    assertTrue(errorMsg.contains("Invalid Credentials"));
+	}
+}

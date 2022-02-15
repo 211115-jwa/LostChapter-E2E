@@ -73,25 +73,6 @@ public class CartTest {
 		assertNotNull(product.getText());
 	}
 	
-	
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	
-	@When("I am redirected to my cart page")
-	public void i_am_redirected_to_my_cart_page1() {
-		cartPage.navigateTo(cartUrl);
-	}
-
-	@When("products are visible")
-	public void products_are_visible() {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-				.withTimeout(Duration.ofSeconds(5))
-				.pollingEvery(Duration.ofMillis(50));
-		wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.id("products"),0));
-
-		WebElement product = driver.findElement(By.id("products"));
-		assertNotNull(product.getText());
-	}
 
 	@When("I click remove item from cart")
 	public void i_click_remove_item_from_cart() {

@@ -38,19 +38,9 @@ public class LogoutTest {
 		logoutPage.navigateTo(websiteUrl);
 	}
 	
-	@Given("I click the login button in the Header")
-	public void i_click_the_login_button_in_the_header() {
-		loginPage.clickLoginHeader();
-	}
-	
 	@Given("I enter username and password to log in")
 	public void i_enter_username_and_password_to_log_in() {
 		logoutPage.enterCredentials("chrisw", "123456789");
-	}
-	
-	@Given("I click the login button")
-	public void i_click_the_login_button() {
-		loginPage.clickLoginButton();
 	}
 
 	@When("I click the logout button")

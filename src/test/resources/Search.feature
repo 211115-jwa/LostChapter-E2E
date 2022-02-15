@@ -10,4 +10,4 @@ Scenario: Searching for a book that does not exist
 	Given the user am on the home page
 	When the user enters an incorrect book on the search bar
 	And the user clicks search
-	Then the appropriate error message should appear
+	Then the appropriate search error message should appear

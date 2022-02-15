@@ -36,11 +36,6 @@ public class SearchTest {
 		searchResultPage = new SearchResultPage(driver);
 	}
 
-	@Given("I am on the home page")
-	public void i_am_on_the_home_page() {
-		searchResultPage.navigateTo(websiteUrl);
-	}
-
 	@When("I enters an correct book on the search bar")
 	public void i_enters_an_correct_book_on_the_search_bar() {
 		searchResultPage.searchBook(goodBook);
@@ -61,8 +56,8 @@ public class SearchTest {
 		searchResultPage.navigateTo(searchURL.concat(goodBook));
 	}
 
-	@Then("the appropriate error message should appear")
-	public void the_appropriate_error_message_should_appear() {
+	@Then("the appropriate search error message should appear")
+	public void the_appropriate_search_error_message_should_appear() {
 		String errorMsg = searchResultPage.getErrorMessage();
 	    assertTrue(errorMsg.contains("Book does not exist, try again"));
 	}
