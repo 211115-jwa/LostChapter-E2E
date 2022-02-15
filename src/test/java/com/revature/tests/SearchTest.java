@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.revature.models.pages.SearchResultPage;
 
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -60,5 +61,10 @@ public class SearchTest {
 	public void the_appropriate_search_error_message_should_appear() {
 		String errorMsg = searchResultPage.getErrorMessage();
 	    assertTrue(errorMsg.contains("Book does not exist, try again"));
+	}
+	
+	@AfterAll
+	public static void closeDriver() {
+		driver.quit();
 	}
 }

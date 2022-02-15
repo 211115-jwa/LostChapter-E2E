@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -51,6 +52,11 @@ public class LogoutTest {
 	@Then("I should be redirected to the Home page")
 	public void i_should_be_redirected_to_the_home_page() {
 		logoutPage.navigateTo(websiteUrl);
+	}
+	
+	@AfterAll
+	public static void closeDriver() {
+		driver.quit();
 	}
 	
 }
