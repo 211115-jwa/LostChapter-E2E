@@ -27,5 +27,4 @@ public class HomePage {
 	public void navigateTo() {
 		driver.get("http://localhost:4200/home");
 	}
-
 }

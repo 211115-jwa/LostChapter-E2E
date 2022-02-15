@@ -41,7 +41,6 @@ public class CartPage {
 	public void clickDelete() {
 		delete.click();
 	}
-	
-	
-	
+
 }
+
