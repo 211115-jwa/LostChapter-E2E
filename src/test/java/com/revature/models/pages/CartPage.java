@@ -5,21 +5,41 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.revature.models.components.FrontPageComponent;
-import com.revature.models.components.NavbarComponent;
-import com.revature.models.components.ProductModale;
-
 public class CartPage {
-	
-private  WebDriver driver;
+
+	private  WebDriver driver;
+	@FindBy(id="product")
+	WebElement product;
+	@FindBy(id="qty") 
+	WebElement quantity;
+	@FindBy(id="delete")
+	WebElement delete;
+	@FindBy(id="add") //?
+	WebElement addCart;
 
 	public CartPage(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
-public void navigateTo() {
-	driver.get("http://localhost:4200/cart");
-}
-	
-	
+
+	public void navigateTo(String url) {
+		driver.get(url);
+	}
+
+	public void clickProduct() {
+		product.click();
+	}
+
+	public void clickQuantity() {
+		quantity.click();
+	}
+
+	public void clickAddCart() {
+		addCart.click();
+	}
+
+	public void clickDelete() {
+		delete.click();
+	}
+
 }
