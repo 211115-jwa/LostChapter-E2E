@@ -45,7 +45,7 @@ public class LogoutTest {
 
 	@Given("I am at the Home page")
 	public void i_am_at_the_home_page() {
-		logoutPage.navigateTo(websiteUrl);
+		logoutPage.navigateTo(this.websiteUrl);
 	}
 	
 	@Given("I enter username and password to log in")

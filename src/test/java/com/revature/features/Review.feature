@@ -1,14 +1,12 @@
 Feature: Review
   I want to use this template to view review and add reviews
 
-  @tag1
   Scenario: View Reviews
     Given I am on the home page
 		When I click on a product on the front page
     Then the book information popup will show
     And reviews can be viewed below
 
-  @tag2
   Scenario: Add Reviews
    Given I am on the home page
     And I click the login button in the Header

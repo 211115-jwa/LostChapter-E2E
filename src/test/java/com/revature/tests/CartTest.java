@@ -34,7 +34,7 @@ public class CartTest {
 	private String cartUrl = "localhost:4200/cart";
 	
 	private static CartPage cartPage;
-	private LoginPage loginPage; 
+  private static LoginPage loginPage; 
 	
 	@BeforeAll
 	public static void setUpDriver(){
@@ -53,12 +53,21 @@ public class CartTest {
 	
 	@Given("I am on the home page")
 	public void i_am_on_the_home_page() {
-		cartPage.navigateTo(websiteUrl);
+		cartPage.navigateTo(this.websiteUrl);
 	}
 
 	@When("I put a quantity")
 	public void i_put_a_quantity() {
 		cartPage.clickQuantity();
+	}
+	
+	@When("I click on a product on the front page")
+	public void i_click_on_a_product_on_the_front_page() {
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(Duration.ofSeconds(5))
+				.pollingEvery(Duration.ofMillis(50));
+		wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.id("product"),0));
+		cartPage.clickProduct();
 	}
 
 	@When("I click add to cart")
@@ -68,7 +77,7 @@ public class CartTest {
 
 	@Then("I am redirected to my cart page")
 	public void i_am_redirected_to_my_cart_page() {
-		cartPage.navigateTo(cartUrl);
+		cartPage.navigateTo(this.cartUrl);
 	}
 
 	@Then("products are visible")
