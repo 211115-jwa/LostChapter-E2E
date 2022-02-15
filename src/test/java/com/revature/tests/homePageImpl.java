@@ -30,7 +30,7 @@ public class homePageImpl {
 	@BeforeAll
 	public static void setUpDriver()
 	{
-		File file = new File("src/chromedriver.exe");
+		File file = new File("src/test/chromedriver.exe");
 		System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 		
 		driver = new ChromeDriver();
@@ -43,8 +43,7 @@ public class homePageImpl {
 	public void teardown() {
 		
 		this.driver.close();
-		this.driver.quit();
-		
+		this.driver.quit();	
 	}
 	
 	@Given("The user is on the home component")
