@@ -26,4 +26,3 @@ Scenario Outline: Logging in correctly
 		|		username		|		password		|
 		|		hola			| 		123				|
 		|		comida			|		123				|
-		

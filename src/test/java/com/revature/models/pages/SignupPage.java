@@ -18,4 +18,3 @@ public class SignupPage {
 		driver.get(url);
 	}	
 }
-	
