@@ -37,8 +37,8 @@ public class LoginTest {
 	@AfterEach
 	public void teardown() {
 		
-		this.driver.close();
-		this.driver.quit();	
+		driver.close();
+		driver.quit();	
 	}
 	
 	@Given("I am on the login page")

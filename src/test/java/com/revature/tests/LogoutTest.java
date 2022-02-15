@@ -4,6 +4,8 @@ import java.io.File;
 
 import com.revature.models.pages.LoginPage;
 import com.revature.models.pages.LogoutPage;
+
+import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -32,6 +34,13 @@ public class LogoutTest {
 
 		driver = new ChromeDriver();
 		LogoutPage = new LogoutPage(driver);
+	}
+	
+	@AfterEach
+	public void teardown() {
+
+		driver.close();
+		driver.quit();	
 	}
 
 	@Given("I am at the Home page")

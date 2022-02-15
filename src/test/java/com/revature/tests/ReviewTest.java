@@ -34,8 +34,8 @@ public class ReviewTest {
 	@AfterEach
 	public void teardown() {
 
-		this.driver.close();
-		this.driver.quit();	
+		driver.close();
+		driver.quit();	
 	}
 
 	@When("I click on a product on the front page")
