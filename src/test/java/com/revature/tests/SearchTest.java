@@ -4,12 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 
+import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.revature.models.pages.SearchResultPage;
 
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -34,6 +36,13 @@ public class SearchTest {
 
 		driver = new ChromeDriver();
 		searchResultPage = new SearchResultPage(driver);
+	}
+	
+	@AfterEach
+	public void teardown() {
+
+		driver.close();
+		driver.quit();	
 	}
 
 	@When("I enters an correct book on the search bar")
@@ -60,5 +69,10 @@ public class SearchTest {
 	public void the_appropriate_search_error_message_should_appear() {
 		String errorMsg = searchResultPage.getErrorMessage();
 	    assertTrue(errorMsg.contains("Book does not exist, try again"));
+	}
+	
+	@AfterAll
+	public static void closeDriver() {
+		driver.quit();
 	}
 }

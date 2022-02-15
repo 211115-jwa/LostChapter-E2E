@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.Wait;
 
 import com.revature.models.pages.ReviewPage;
 
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -41,8 +42,8 @@ public class ReviewTest {
 	@AfterEach
 	public void teardown() {
 
-		this.driver.close();
-		this.driver.quit();	
+		driver.close();
+		driver.quit();	
 	}
 	
 	@Given("the book information popup shows")
@@ -86,6 +87,11 @@ public class ReviewTest {
 	@Then("I can enter a review title")
 	public void i_can_enter_a_review_title() {
 		reviewPage.addReview("Title", "I like this movie a lot");
+	}
+	
+	@AfterAll
+	public static void closeDriver() {
+		driver.quit();
 	}
 
 }

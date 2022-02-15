@@ -1,7 +1,6 @@
 Feature: logging in as a user
 
-#Working TM (c)
-
+  #Working TM (c)
   Scenario Outline: logging in with correct credentials
     Given the user is on the login page
     When the user enters "<username>" and "<password>" to log in
@@ -11,7 +10,7 @@ Feature: logging in as a user
     Examples: 
       | username  | password  |
       | gamalielb | 123456789 |
-      | khayes    | 123456789 |
+      | khayes    | pass      |
       | chrisw    | 123456789 |
       | ChistianS | 123456789 |
       | ricky23i  | 123456789 |
