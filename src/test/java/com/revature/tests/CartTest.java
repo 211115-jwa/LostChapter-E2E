@@ -1,5 +1,6 @@
 package com.revature.tests;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.time.Duration;
@@ -58,14 +59,18 @@ public class CartTest {
 
 	@Then("I am redirected to my cart page")
 	public void i_am_redirected_to_my_cart_page() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		cartPage.navigateTo(cartUrl);
 	}
 
 	@Then("products are visible")
 	public void products_are_visible1() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(Duration.ofSeconds(5))
+				.pollingEvery(Duration.ofMillis(50));
+		wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.id("product"),0));
+
+		WebElement product = driver.findElement(By.id("product"));
+		assertNotNull(product.getText());
 	}
 	
 	
@@ -79,8 +84,13 @@ public class CartTest {
 
 	@When("products are visible")
 	public void products_are_visible() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(Duration.ofSeconds(5))
+				.pollingEvery(Duration.ofMillis(50));
+		wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.id("products"),0));
+
+		WebElement product = driver.findElement(By.id("products"));
+		assertNotNull(product.getText());
 	}
 
 	@When("I click remove item from cart")
