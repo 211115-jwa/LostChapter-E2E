@@ -38,6 +38,10 @@ public class LoginPage {
 		logBtn.click();	
 	}
 	
+	public void clickLogoutButton() {
+		logoutBtn.click();	
+	}
+	
 	public void enterUsernameAndPassword(String username, String password) {
 		driver.findElement(By.id("username-login")).sendKeys(username);
 		driver.findElement(By.id("password-login")).sendKeys(password);
