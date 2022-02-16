@@ -40,10 +40,9 @@ public class homePageImpl {
 	
 	
 	@AfterEach
-	public void teardown() {
-		
-		this.driver.close();
-		this.driver.quit();	
+	public void teardown() {	
+		homePageImpl.driver.close();
+		homePageImpl.driver.quit();	
 	}
 	
 	@Given("The user is on the home component")

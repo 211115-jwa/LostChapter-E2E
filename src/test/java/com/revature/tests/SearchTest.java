@@ -62,7 +62,7 @@ public class SearchTest {
 	
 	@Then("I am redirected to the search results page and see results")
 	public void i_am_redirected_to_the_search_results_page_and_see_results() {
-		searchResultPage.navigateTo(searchURL.concat(goodBook));
+		searchResultPage.navigateTo("http://localhost:4200/home");
 	}
 
 	@Then("the appropriate search error message should appear")
