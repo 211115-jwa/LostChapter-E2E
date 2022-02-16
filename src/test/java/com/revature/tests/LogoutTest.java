@@ -42,24 +42,19 @@ public class LogoutTest {
 		driver.close();
 		driver.quit();	
 	}
-
-	@Given("I am at the Home page")
-	public void i_am_at_the_home_page() {
+	
+	@Given("the user is on the home page")
+	public void the_user_is_on_the_home_page() {
 		logoutPage.navigateTo(this.websiteUrl);
 	}
-	
-	@Given("I enter username and password to log in")
-	public void i_enter_username_and_password_to_log_in() {
-		logoutPage.enterCredentials("chrisw", "123456789");
-	}
 
-	@When("I click the logout button")
-	public void i_click_the_logout_button() {
+	@When("the user click the logout button")
+	public void the_user_click_the_logout_button() {
 		logoutPage.clickLogoutButton();
 	}
 
-	@Then("I should be redirected to the Home page")
-	public void i_should_be_redirected_to_the_home_page() {
+	@Then("the user should be redirected to the Home page")
+	public void the_user_should_be_redirected_to_the_home_page() {
 		logoutPage.navigateTo(websiteUrl);
 	}
 	
@@ -67,5 +62,7 @@ public class LogoutTest {
 	public static void closeDriver() {
 		driver.quit();
 	}
+	
+	
 	
 }
