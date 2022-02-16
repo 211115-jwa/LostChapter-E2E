@@ -1,6 +1,5 @@
 Feature: View all books by sales,featured, and genre.
 
- 
   Scenario: Users can view featured books
     Given The user is on the home component
     Then The featured books display
