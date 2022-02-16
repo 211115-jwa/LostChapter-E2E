@@ -29,7 +29,7 @@ public class CartPage {
 
 	public void clickProduct() {
 		//driver.findElement(By.id("product")).click();
-		product.click();
+		product.getText();
 	}
 
 	public void clickQuantity() {
