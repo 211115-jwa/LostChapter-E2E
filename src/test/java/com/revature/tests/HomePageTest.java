@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.junit.Assert.assertNotNull;
 import com.revature.models.pages.HomePage;
 
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -90,5 +91,10 @@ public class HomePageTest {
 
 		WebElement book = driver.findElement(By.id("genr"));
 		assertNotNull(book.getText());
+	}
+	
+	@AfterAll
+	public static void closeDriver() {
+		driver.quit();
 	}
 }
