@@ -66,7 +66,7 @@ public class CartTest {
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
 				.withTimeout(Duration.ofSeconds(5))
 				.pollingEvery(Duration.ofMillis(50));
-		wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.id("product"),0));
+		wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.className("product"),0));
 		cartPage.clickProduct();
 	}
 
@@ -85,9 +85,9 @@ public class CartTest {
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
 				.withTimeout(Duration.ofSeconds(5))
 				.pollingEvery(Duration.ofMillis(50));
-		wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.id("product"),0));
+		wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.className("product"),0));
 
-		WebElement product = driver.findElement(By.id("product"));
+		WebElement product = driver.findElement(By.className("product"));
 		assertNotNull(product.getText());
 	}
 	
