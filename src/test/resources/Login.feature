@@ -12,7 +12,6 @@ Feature: logging in as a user
       | gamalielb | 123456789 |
       | khayes    | pass      |
       | chrisw    | 123456789 |
-      | ChistianS | 123456789 |
       | ricky23i  | 123456789 |
       | testing   | 123456789 |
       | carlo     | 123456789 |

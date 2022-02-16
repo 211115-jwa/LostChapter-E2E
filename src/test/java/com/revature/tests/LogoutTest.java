@@ -22,7 +22,7 @@ public class LogoutTest {
 
 	private static WebDriver driver;
 	private WebDriverWait wdw;
-	private String websiteUrl = "localhost:4200/home";
+	private String websiteUrl = "http://localhost:4200/home";
 	private LogoutPage logoutPage;
 	private LoginPage loginPage;
 
