@@ -18,7 +18,7 @@ public class ReviewTest {
 
 
 	private static WebDriver driver;
-	private String websiteUrl = "localhost:4200/home";
+	private String websiteUrl = "http://localhost:4200/home";
 	private static ReviewPage reviewPage;
 
 

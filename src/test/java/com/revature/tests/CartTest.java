@@ -30,8 +30,8 @@ public class CartTest {
 
 	
 	private static WebDriver driver;
-	private String websiteUrl = "localhost:4200/home";
-	private String cartUrl = "localhost:4200/cart";
+	private String websiteUrl = "http://localhost:4200/home";
+	private String cartUrl = "http://localhost:4200/cart";
 	
 	private static CartPage cartPage;
 	private LoginPage loginPage; 

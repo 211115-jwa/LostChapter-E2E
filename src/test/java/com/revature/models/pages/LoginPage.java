@@ -17,8 +17,9 @@ public class LoginPage {
 	
 	@FindBy(id="loginBtnHeader")
 	private WebElement loginBtnHeader;
+	
 	@FindBy(id="log-out-btn")
-	WebElement logoutBtn;
+	private WebElement logoutBtn;
 	
 	@FindBy(id="login-button-logincomponent")
 	private WebElement logBtn;
@@ -49,16 +50,17 @@ public class LoginPage {
 	
 	public String getLoginText() {
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-				.withTimeout(Duration.ofSeconds(5)) 
-				.pollingEvery(Duration.ofMillis(100))
-				.ignoring(NoSuchElementException.class);
+				.withTimeout(Duration.ofSeconds(5))
+				.pollingEvery(Duration.ofMillis(50));
+		wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.id("navbar-username"),0));
 		
-		wait.until(ExpectedConditions.visibilityOf(logoutBtn));
-		return logoutBtn.getText();
+		WebElement navLink = driver.findElement(By.id("navbar-username"));
+		
+		return navLink.getText();
 	}
 
 	public String getErrorMessage() {
-		WebElement errorMsg = driver.findElement(By.id("Error-login")); 
+		WebElement errorMsg = driver.findElement(By.id("error-login")); 
 		return errorMsg.getText();
 	}
 

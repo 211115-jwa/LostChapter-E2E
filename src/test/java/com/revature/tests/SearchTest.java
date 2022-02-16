@@ -21,8 +21,8 @@ public class SearchTest {
 
 	private static WebDriver driver;
 	private static WebDriverWait wait;
-	private String websiteUrl = "localhost:4200/home";
-	private String searchURL = "localhost:4200/search-results/";
+	private String websiteUrl = "http://localhost:4200/home";
+	private String searchURL = "http://localhost:4200/search-results/";
 	String badBook = "Harry Potter and the Adventures of Hermione";
 	String goodBook = "Harry Potter and the Goblet of Fire";
 

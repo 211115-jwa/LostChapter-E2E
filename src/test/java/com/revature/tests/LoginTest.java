@@ -21,7 +21,7 @@ import io.cucumber.java.en.When;
 public class LoginTest {
 
 	private static WebDriver driver;
-	private String websiteUrl = "localhost:4200/login";
+	private String websiteUrl = "http://localhost:4200/login";
 	private static LoginPage loginPage;
 	
 
@@ -161,7 +161,7 @@ public class LoginTest {
 	@Then("the navbar says {string}")
 	public void the_navbar_says(String username) {
 		String linkText = loginPage.getLoginText();
-		assertEquals(username + " ", linkText);
+		assertEquals(username, linkText);
 		loginPage.clickLogoutButton();
 	}
 	
