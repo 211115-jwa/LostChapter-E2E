@@ -8,13 +8,14 @@ Feature: logging in as a user
     Then the navbar says "<username>"
 
     Examples: 
-      | username  | password  |
-      | gamalielb | 123456789 |
-      | khayes    | pass      |
-      | chrisw    | 123456789 |
-      | ricky23i  | 123456789 |
-      | testing   | 123456789 |
-      | carlo     | 123456789 |
+      | username   | password  |
+      | gamalielb  | 123456789 |
+      | khayes     | pass      |
+      | chrisw     | 123456789 |
+      | christians | pass56789 |
+      | ricky23i   | 123456789 |
+      | testing    | 123456789 |
+      | carlo      | 123456789 |
 
   Scenario Outline: logging in with incorrect passwords
     Given the user is on the login page
